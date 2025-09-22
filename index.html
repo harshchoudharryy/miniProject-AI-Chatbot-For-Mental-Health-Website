@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | MindCare</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #4B6CB7, #182848);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-wrapper {
+      background-color: #fff;
+      width: 90%;
+      max-width: 450px;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .login-wrapper h2 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .login-wrapper p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .login-wrapper input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border 0.3s ease;
+    }
+
+    .login-wrapper input:focus {
+      border-color: #4B6CB7;
+      outline: none;
+    }
+
+    .login-wrapper button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4B6CB7;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-wrapper button:hover {
+      background-color: #3a589f;
+    }
+
+    .login-wrapper .signup-text {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-wrapper .signup-text a {
+      color: #4B6CB7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-wrapper .signup-text a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .login-wrapper {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+    <h2>🧠 MindCare</h2>
+    <p>Welcome back! Please login to continue.</p>
+
+    <form id="loginForm">
+      <input type="email" name="email" placeholder="📧 Email" required />
+      <input type="password" name="password" placeholder="🔒 Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="signup-text">
+      Don't have an account? <a href="register.html">Create one here</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Redirect to home (you can add validation here)
+      window.location.href = "home.html";
+    });
+  </script>
+</body>
+</html>
