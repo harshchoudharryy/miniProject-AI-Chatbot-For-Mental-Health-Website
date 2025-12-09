@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     appendMessage('You', message);
     userInput.value = '';
 
-    appendMessage('AI', 'Typing...');
+    // Add typing indicator
+    const typingMsg = appendMessage('AI', 'Typing...');
 
     try {
       const response = await fetch('https://mindcare-hrv2.onrender.com/api/chat', {
@@ -23,19 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await response.json();
 
-      // Remove temporary "Typing..."
-      removeLastMessage();
+      typingMsg.remove(); // remove typing indicator
 
       if (data.reply) {
         appendMessage('AI', data.reply);
       } else {
-        appendMessage('AI', 'No response from server.');
+        appendMessage('AI', '⚠️ No response from server.');
       }
     } catch (error) {
-      console.error('Error:', error);
-
-      removeLastMessage();
-      appendMessage('AI', '⚠️ Server error. Please try again later.');
+      typingMsg.remove();
+      appendMessage('AI', '⚠️ Server error. Try again later.');
     }
   });
 
@@ -45,12 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
     chatWindow.appendChild(messageDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
-  }
-
-  function removeLastMessage() {
-    const messages = chatWindow.getElementsByClassName('message');
-    if (messages.length > 0) {
-      chatWindow.removeChild(messages[messages.length - 1]);
-    }
+    return messageDiv;
   }
 });
